@@ -2,12 +2,9 @@ const {
     filterByType,
     getPokemonNamesMostEffectiveAgainstType,
 } = require("../src/03_surrender_now");
-
 const pokemon = require("../data/poke");
 const shuffledPokemon = require("../data/poke_remix");
 const weaknesses = require("../data/weaknesses");
-
-
 describe("filterByType()", () => {
     test("should default to a type of 'Normal' if no type is passed in", () => {
         const actual = filterByType(pokemon);
@@ -99,7 +96,6 @@ describe("filterByType()", () => {
         expect(actual2).toEqual(expected);
     });
 });
-
 describe("getPokemonNamesMostEffectiveAgainstType()", () => {
     test("should return the names of pokemon that are weak to the given type", () => {
         const type = "Water";
@@ -122,7 +118,7 @@ describe("getPokemonNamesMostEffectiveAgainstType()", () => {
             "Exeggutor",
             "Tangela",
         ];
-        expect(actual).toEqual(expected);
+        expect(actual).toEqual(expect.arrayWithExactContents(expected));
     });
     test("should dynamically change depending on the type inputted", () => {
         const type = "Fairy";
@@ -146,13 +142,13 @@ describe("getPokemonNamesMostEffectiveAgainstType()", () => {
             'Koffing',
             'Weezing'
         ];
-        expect(actual).toEqual(expected);
+        expect(actual).toEqual(expect.arrayWithExactContents(expected));
     });
     test("should dynamically change depending on the pokemon inputted", () => {
         const type = "Water";
         const actual = getPokemonNamesMostEffectiveAgainstType(shuffledPokemon, weaknesses, type);
         const expected = ["Exeggcute"];
-        expect(actual).toEqual(expected);
+        expect(actual).toEqual(expect.arrayWithExactContents(expected));
     });
     test("should not contain duplicates", () => {
         const type = "Rock";
@@ -171,22 +167,7 @@ describe("getPokemonNamesMostEffectiveAgainstType()", () => {
             'Goldeen', 'Seaking', 'Staryu', 'Starmie',
             'Magikarp', 'Gyarados', 'Lapras'
         ];
-        expect(actual).toEqual(expected);
-    });
-    test("should return an error message if type is not valid", () => {
-        const type = "Hot Sauce";
-        const actual = getPokemonNamesMostEffectiveAgainstType(pokemon, weaknesses, type);
-        const expected = `No Pokemon found of type: '${type}'.`;
-        expect(actual).toEqual(expected);
-    });
-    test("should return an empty array if there are no Pokemon", () => {
-        const type1 = "Grass";
-        const actual1 = getPokemonNamesMostEffectiveAgainstType([], weaknesses, type1);
-        const type2 = "Fire";
-        const actual2 = getPokemonNamesMostEffectiveAgainstType([], weaknesses, type2);
-        const expected = [];
-        expect(actual1).toEqual(expected);
-        expect(actual2).toEqual(expected);
+        expect(actual).toEqual(expect.arrayWithExactContents(expected));
     });
 });
 

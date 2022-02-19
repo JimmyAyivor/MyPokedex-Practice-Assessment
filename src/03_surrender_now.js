@@ -35,7 +35,18 @@ const exampleWeaknesses = require("../data/weaknesses");
  *  filterByType(pokemon, "Shadow")
  *  //> [];
  */
-function filterByType() {}
+function filterByType(pokemon,type) {
+let pokemonArrayOfObj = [];
+for (let i = 0; i < pokemon.length; i++) {
+  if(pokemon[i].type.includes(type)){
+pokemonArrayOfObj.push(`{${pokemon[i].name}}`)
+  };
+  
+}
+
+return pokemonArrayOfObj;
+
+}
 
 /**
  * getPokemonNamesMostEffectiveAgainstType()
