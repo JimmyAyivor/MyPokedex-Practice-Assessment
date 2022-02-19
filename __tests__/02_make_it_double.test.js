@@ -30,7 +30,7 @@ describe("countByType()", () => {
         };
         expect(actual).toEqual(expected);
     });
-    test("should dynamically change depending on the movies inputted", () => {
+    test("should dynamically change depending on the pokemon inputted", () => {
         const actual = countByType(shuffledPokemon);
         const expected = {
             Grass: 1,
@@ -44,7 +44,7 @@ describe("countByType()", () => {
         };
         expect(actual).toEqual(expected);
     });
-    test("should return an empty object if there are no movies", () => {
+    test("should return an empty object if there are no pokemon", () => {
         const actual = countByType([]);
         const expected = {};
         expect(actual).toEqual(expected);
@@ -70,7 +70,7 @@ describe("findByNumber()", () => {
             "https://img.pokemondb.net/sprites/black-white/anim/normal/meowth.gif"
         );
     });
-    test("should dynamically change depending on the movies inputted", () => {
+    test("should dynamically change depending on the pokemon inputted", () => {
         const number = "151";
         const expandedPokemon = [...shuffledPokemon, {
             "national_number": "151",
@@ -101,13 +101,13 @@ describe("findByNumber()", () => {
             "https://img.pokemondb.net/sprites/black-white/anim/normal/mew.gif"
         );
     });
-    test("should return `null` if the movie cannot be found", () => {
+    test("should return `null` if the pokemon cannot be found", () => {
         const number = "576";
         const actual = findByNumber(pokemon, number);
         const expected = null;
         expect(actual).toEqual(expected);
     });
-    test("should return `null` if there are no movies", () => {
+    test("should return `null` if there are no pokemon", () => {
         const number = "122";
         const actual = findByNumber([], number);
         const expected = null;

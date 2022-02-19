@@ -169,5 +169,20 @@ describe("getPokemonNamesMostEffectiveAgainstType()", () => {
         ];
         expect(actual).toEqual(expect.arrayWithExactContents(expected));
     });
+    test("should return an error message if type is not valid", () => {
+        const type = "Hot Sauce";
+        const actual = getPokemonNamesMostEffectiveAgainstType(pokemon, weaknesses, type);
+        const expected = `No Pokemon found of type: '${type}'.`;
+        expect(actual).toEqual(expected);
+    });
+    test("should return an empty array if there are no Pokemon", () => {
+        const type1 = "Grass";
+        const actual1 = getPokemonNamesMostEffectiveAgainstType([], weaknesses, type1);
+        const type2 = "Fire";
+        const actual2 = getPokemonNamesMostEffectiveAgainstType([], weaknesses, type2);
+        const expected = [];
+        expect(actual1).toEqual(expected);
+        expect(actual2).toEqual(expected);
+    });
 });
 
